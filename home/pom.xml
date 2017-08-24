@@ -8,6 +8,7 @@
   <name>home Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+  <!-- dan was here -->
     <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
