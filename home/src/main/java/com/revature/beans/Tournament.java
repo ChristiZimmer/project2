@@ -6,5 +6,6 @@ public class Tournament {
 
 	private int id;
 	private String name;
+	private Coach coach;
 	private Set<Player> participants;
 }
