@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
@@ -21,10 +22,10 @@ public class Coach {
 	@Column
 	private String name;
 	@OneToMany
-	@Column
+	@JoinColumn(name="PLAYER_ID")
 	private Set<Player> pupils;
 	@OneToMany
-	@Column
+	@JoinColumn(name="TOURNAMENT_ID")
 	private Set<Tournament> tournaments;
 	
 	public Coach() {
