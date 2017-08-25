@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
@@ -33,6 +34,7 @@ public class Player {
 	@ManyToOne
 	private Coach coach;
 	@ManyToMany(mappedBy="participants")
+	@JoinColumn(name="TOURNAMENT_ID")
 	private Set<Tournament> tournaments;
 	
 	public Player() {
