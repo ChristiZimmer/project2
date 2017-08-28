@@ -2,6 +2,10 @@ package com.revature.beans;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 public class Request {
 
 	private int id;
