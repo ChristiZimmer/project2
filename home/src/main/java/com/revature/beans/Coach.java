@@ -19,7 +19,7 @@ public class Coach {
 	@Column(name="COACH_ID")
 	private int id;
 	@NotBlank
-	@Column
+	@Column(name="COACH_NAME")
 	private String name;
 	@OneToMany(mappedBy="coach")
 	private Set<Player> pupils;

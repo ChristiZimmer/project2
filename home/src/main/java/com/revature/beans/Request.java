@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
+@Entity
 public class Request {
 
 	@Id
@@ -18,10 +20,13 @@ public class Request {
 	private Timestamp submitted;
 	@Column(name="TIME_RESOLVED")
 	private Timestamp resolved;
-	
+	@JoinColumn(name="PLAYER_NAME")
 	private Player player;
+	@JoinColumn(name="COACH_NAME")
 	private Coach coach;
+	@JoinColumn(name="STATUS")
 	private Status status;
+	@Column
 	private String description;
 	
 	public Request() {

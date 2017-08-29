@@ -22,7 +22,7 @@ public class Player {
 	@Column(name="PLAYER_ID")
 	private int id;
 	@NotBlank
-	@Column
+	@Column(name="PLAYER_NAME")
 	private String name;
 	@NotBlank
 	@Column

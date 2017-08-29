@@ -44,7 +44,24 @@ public class TennisDAO {
 		Set<Player> players = tournament.getParticipants();
 		players.add(player);
 		tournament.setParticipants(players);
+		sessionFactory.getCurrentSession().save(tournament);
+	}
+
+	/**
+	 * Updates a tournament
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public void updateTournament(Tournament tournament) {
 		sessionFactory.getCurrentSession().saveOrUpdate(tournament);
+	}
+
+	/**
+	 * Get all tournaments
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Tournament> findAllTournaments() {
+		return sessionFactory.getCurrentSession().createCriteria(Tournament.class).list();
 	}
 
 	/**
