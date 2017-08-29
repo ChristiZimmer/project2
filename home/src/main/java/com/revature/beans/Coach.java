@@ -19,12 +19,14 @@ public class Coach {
 	@Column(name="COACH_ID")
 	private int id;
 	@NotBlank
-	@Column
+	@Column(name="COACH_NAME")
 	private String name;
 	@OneToMany(mappedBy="coach")
 	private Set<Player> pupils;
 	@OneToMany(mappedBy="coach")
 	private Set<Tournament> tournaments;
+	@OneToMany(mappedBy="coach")
+	private Set<Request> request;
 	
 	public Coach() {
 		super();
