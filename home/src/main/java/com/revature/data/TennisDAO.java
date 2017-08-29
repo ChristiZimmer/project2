@@ -1,5 +1,6 @@
 package com.revature.data;
 
+import java.util.Set;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -7,6 +8,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.beans.Tournament;
 import com.revature.beans.Coach;
 import com.revature.beans.Player;
 
@@ -18,6 +20,33 @@ public class TennisDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	/**
+	 * Saves the tournament object
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public void createTournament(Tournament tournament) {
+		sessionFactory.getCurrentSession().save(tournament);
+	}
+	
+	/**
+	 * Deletes the tournament object
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public void deleteTournament(Tournament tournament) {
+		sessionFactory.getCurrentSession().delete(tournament);
+	}
+	
+	/**
+	 * Adds the Player to the list of participants in the Tournament and saves the Tournament
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public void addPlayersTournament(Tournament tournament, Player player) {
+		Set<Player> players = tournament.getParticipants();
+		players.add(player);
+		tournament.setParticipants(players);
+		sessionFactory.getCurrentSession().saveOrUpdate(tournament);
+	}
+
 	/**
 	 * Tennis Player can request to add a coach with coach's approval
 	 * @param coach
