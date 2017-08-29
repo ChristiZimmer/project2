@@ -4,7 +4,9 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -15,18 +17,18 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public class Tournament {
 
-	@Min(value=1)
+	@Min(value=0)
 	@Id
 	@Column(name="TOURNAMENT_ID")
 	private int id;
 	@NotBlank
 	@Column
 	private String name;
-	@Column
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="COACH_ID")
 	private Coach coach;
 	@Column
-	@ManyToMany
+	@ManyToMany(mappedBy="tournaments")
 	private Set<Player> participants;
 	
 	public Tournament() {

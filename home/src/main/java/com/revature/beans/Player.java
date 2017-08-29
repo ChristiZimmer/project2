@@ -4,8 +4,10 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
@@ -15,7 +17,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public class Player {
 
-	@Min(value=1)
+	@Min(value=0)
 	@Id
 	@Column(name="PLAYER_ID")
 	private int id;
@@ -29,12 +31,12 @@ public class Player {
 	@Min(value=1)
 	@Column
 	private int rank;
-	@Column
 	@NotBlank
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="COACH_ID")
 	private Coach coach;
-	@ManyToMany(mappedBy="participants")
-	@JoinColumn(name="TOURNAMENT_ID")
+	@ManyToMany
+	@JoinTable(name="TOURNAMENT_ENROLLMENT")
 	private Set<Tournament> tournaments;
 	
 	public Player() {
