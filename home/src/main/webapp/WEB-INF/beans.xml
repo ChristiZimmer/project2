@@ -15,5 +15,5 @@
 		<property name="prefix" value="/pages/" />
 		<property name="suffix" value=".html" />
 	</bean>
-	<context:component-scan base-package="project2" />
+	<context:component-scan base-package="home" />
 </beans>

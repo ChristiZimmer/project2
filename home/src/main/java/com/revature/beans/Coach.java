@@ -14,18 +14,16 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public class Coach {
 	
-	@Min(value=1)
+	@Min(value=0)
 	@Id
 	@Column(name="COACH_ID")
 	private int id;
 	@NotBlank
 	@Column
 	private String name;
-	@OneToMany
-	@JoinColumn(name="PLAYER_ID")
+	@OneToMany(mappedBy="coach")
 	private Set<Player> pupils;
-	@OneToMany
-	@JoinColumn(name="TOURNAMENT_ID")
+	@OneToMany(mappedBy="coach")
 	private Set<Tournament> tournaments;
 	
 	public Coach() {

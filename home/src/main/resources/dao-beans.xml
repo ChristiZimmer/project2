@@ -20,7 +20,7 @@
 	<!-- 2. SessionFactory -->
 	<bean name="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="home" />
+		<property name="packagesToScan" value="com.revature" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
