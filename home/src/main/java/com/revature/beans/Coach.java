@@ -25,6 +25,8 @@ public class Coach {
 	private Set<Player> pupils;
 	@OneToMany(mappedBy="coach")
 	private Set<Tournament> tournaments;
+	@OneToMany(mappedBy="coach")
+	private Set<Request> request;
 	
 	public Coach() {
 		super();

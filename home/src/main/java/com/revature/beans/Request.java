@@ -4,13 +4,19 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Request {
+	
+	private static final int PENDING = 1;
+	private static final int ACCEPTED = 2;
+	private static final int DENIED = 3;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -20,12 +26,14 @@ public class Request {
 	private Timestamp submitted;
 	@Column(name="TIME_RESOLVED")
 	private Timestamp resolved;
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="PLAYER_NAME")
 	private Player player;
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="COACH_NAME")
 	private Coach coach;
-	@JoinColumn(name="STATUS")
-	private Status status;
+	@Column
+	private String status;
 	@Column
 	private String description;
 	
@@ -33,7 +41,7 @@ public class Request {
 		super();
 	}
 
-	public Request(int id, Timestamp submitted, Timestamp resolved, Player player, Coach coach, Status status,
+	public Request(int id, Timestamp submitted, Timestamp resolved, Player player, Coach coach, String status,
 			String description) {
 		super();
 		this.id = id;
@@ -85,11 +93,11 @@ public class Request {
 		this.coach = coach;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
