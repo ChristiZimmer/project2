@@ -4,13 +4,21 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class Request {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="REQUEST_ID")
 	private int id;
+	@Column(name="TIME_SUBMITTED")
 	private Timestamp submitted;
+	@Column(name="TIME_RESOLVED")
 	private Timestamp resolved;
+	
 	private Player player;
 	private Coach coach;
 	private Status status;
