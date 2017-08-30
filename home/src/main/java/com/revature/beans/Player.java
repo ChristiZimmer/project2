@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -22,7 +23,7 @@ public class Player {
 	@Column(name="PLAYER_ID")
 	private int id;
 	@NotBlank
-	@Column
+	@Column(name="PLAYER_NAME")
 	private String name;
 	@NotBlank
 	@Column
@@ -38,6 +39,8 @@ public class Player {
 	@ManyToMany
 	@JoinTable(name="TOURNAMENT_ENROLLMENT")
 	private Set<Tournament> tournaments;
+	@OneToMany(mappedBy="player")
+	private Set<Request> request;
 	
 	public Player() {
 		super();
