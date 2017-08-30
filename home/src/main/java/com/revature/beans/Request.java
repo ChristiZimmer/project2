@@ -27,12 +27,12 @@ public class Request {
 	@Column(name="TIME_RESOLVED")
 	private Timestamp resolved;
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="PLAYER_NAME")
+	@JoinColumn(name="PLAYER_ID", nullable=false)
 	private Player player;
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="COACH_NAME")
+	@JoinColumn(name="COACH_ID", nullable=false)
 	private Coach coach;
-	@Column
+	@Column(nullable=false)
 	private String status;
 	@Column
 	private String description;

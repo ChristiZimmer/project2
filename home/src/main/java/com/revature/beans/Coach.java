@@ -19,25 +19,26 @@ public class Coach {
 	@Column(name="COACH_ID")
 	private int id;
 	@NotBlank
-	@Column(name="COACH_NAME")
+	@Column(name="COACH_NAME", nullable=false)
 	private String name;
 	@OneToMany(mappedBy="coach")
 	private Set<Player> pupils;
 	@OneToMany(mappedBy="coach")
 	private Set<Tournament> tournaments;
 	@OneToMany(mappedBy="coach")
-	private Set<Request> request;
+	private Set<Request> requests;
 	
 	public Coach() {
 		super();
 	}
 
-	public Coach(int id, String name, Set<Player> pupils, Set<Tournament> tournaments) {
+	public Coach(int id, String name, Set<Player> pupils, Set<Tournament> tournaments, Set<Request> requests) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.pupils = pupils;
 		this.tournaments = tournaments;
+		this.requests = requests;
 	}
 
 	public int getId() {
@@ -70,6 +71,14 @@ public class Coach {
 
 	public void setTournaments(Set<Tournament> tournaments) {
 		this.tournaments = tournaments;
+	}
+
+	public Set<Request> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(Set<Request> requests) {
+		this.requests = requests;
 	}
 
 	@Override
