@@ -7,6 +7,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
 <script
@@ -49,30 +53,35 @@
 		</div>
 	</nav>
 -->
-<nav class="navbar navbar-inverse" style="background-color: #069bdb">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-      	<img src="http://logos-download.com/wp-content/uploads/2017/01/ATP_World_Tour_logo.png" class="atp-logo-image" alt="" width="187" height="80" style="height: 41px;width: 96px;">
-      </a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#" style="color: #000000"><strong>RANKINGS</strong></a></li>
-      <li><a href="#" style="color: #000000"><strong>TOURNAMENTS</strong></a>
-      <li class="dropdown">
-      	<a href="#" style="color: #000000" class="dropdown-toggle" data-toggle="dropdown"><strong>COACH</strong><span class="caret"></span></a>
-      	<ul class="dropdown-menu">
-      		<li><a href="#" style="color: #000000"><strong>List of coaches</strong></a></li>
-      		<li><a href="#" style="color: #000000"><strong>Request new coach</strong></a></li>
-      	</ul>
+<nav class="navbar navbar-expand-md fixed-top" style="background-color: #069bdb">
+	<a class="navbar-header" href="#"><img src="http://logos-download.com/wp-content/uploads/2017/01/ATP_World_Tour_logo.png" class="atp-logo-image" alt="" style="height: 41px;width: 96px;"></a>
+   <ul class="nav navbar-nav mr-auto">
+     <li class="nav-item dropdown">
+      	<a style="color: #000000" class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"><strong>RANKINGS</strong></a>
+      	<div class="dropdown-menu" aria-labelledby="dropdownRanking">
+              <a class="dropdown-item" href="#">See all rankings</a>
+              <a class="dropdown-item" href="#">See personal ranking</a>
+            </div>
       </li>
-      
-      <li><a href="#" style="color: #000000"><strong>COACH</strong></a></li>
+      <li class="nav-item dropdown">
+      	<a style="color: #000000" class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"><strong>TOURNAMENTS</strong></a>
+      	<div class="dropdown-menu" aria-labelledby="dropdownTournament">
+              <a class="dropdown-item" href="#tournament/all">View current tournaments</a>
+              <a class="dropdown-item" href="#tournament/join">Join tournament</a>
+              <a class="dropdown-item" href="#tournament/create">Create new tournament</a>
+            </div>
+      </li>
+      <li class="nav-item dropdown">
+      	<a style="color: #000000" class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"><strong>COACH</strong></a>
+      	<div class="dropdown-menu" aria-labelledby="dropdownCoach">
+              <a class="dropdown-item" href="#">List of coaches</a>
+              <a class="dropdown-item" href="#">Request new coach</a>
+            </div>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#logout" style="color: #000000"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
-  </div>
 </nav>
 	
 	<div class="container">
