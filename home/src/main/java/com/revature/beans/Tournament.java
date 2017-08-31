@@ -7,12 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Tournament {
@@ -27,7 +30,7 @@ public class Tournament {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="COACH_ID")
 	private Coach coach;
-	@Column
+	@JsonIgnore
 	@ManyToMany(mappedBy="tournaments")
 	private Set<Player> participants;
 	

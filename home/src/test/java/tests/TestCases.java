@@ -28,7 +28,8 @@ public class TestCases {
 		System.out.println("Hi Christi. We're not Friends now, even though I can't spell your name, or just spell in general!");
 	}
 
-/*
+
+	@Ignore
 	@Test
 	public void testTournamentListAll(){
 		TennisDAO dao = setApplicationContext();
@@ -39,7 +40,7 @@ public class TestCases {
 			e.printStackTrace();
 		}
 		for(Tournament t : list){
-			//System.out.println(t);
+			System.out.println(t);
 		}
 	}
 
@@ -63,8 +64,7 @@ public class TestCases {
 		testListAllRequests();
 	}
 	
-	*/
-	
+	@Ignore
 	@Test
 	public void testListAllRequests() {
 		TennisDAO dao = setApplicationContext();
@@ -78,7 +78,7 @@ public class TestCases {
 			System.out.println(r);
 		}
 	}
-	/*
+
 	@Ignore
 	@Test
 	public void testValidateCoachingRequest() {
@@ -117,7 +117,7 @@ public class TestCases {
 		}
 		testListAllRequests();
 	}
-	*/
+
 	public TennisDAO setApplicationContext() {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("dao-beans.xml");
 		TennisDAO dao = (TennisDAO) applicationContext.getBean(TennisDAO.class);

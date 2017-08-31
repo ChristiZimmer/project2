@@ -11,6 +11,8 @@ import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity	// Hibernate marks this POJO as an entity, 
 		// Java looks at this POJO and recreates it as a table in our DB
 public class Coach {
@@ -22,10 +24,13 @@ public class Coach {
 	//@NotBlank
 	@Column(name="COACH_NAME", nullable=false)
 	private String name;
+	@JsonIgnore
 	@OneToMany(mappedBy="coach")
 	private Set<Player> pupils;
+	@JsonIgnore
 	@OneToMany(mappedBy="coach")
 	private Set<Tournament> tournaments;
+	@JsonIgnore
 	@OneToMany(mappedBy="coach")
 	private Set<Request> requests;
 	
