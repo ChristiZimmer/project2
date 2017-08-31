@@ -17,3 +17,11 @@ angular.module("atp").controller("tournamentController", function($http, $scope)
 angular.module("atp").controller("logoutController", function($http, $scope) {
 	// do something
 });
+
+angular.module("atp").controller("requestController", function($http, $scope) {
+	$http({
+		method: "GET", url: "/request/all"
+	}).then(function(response) {
+		$scope.allRequests = response.data;
+	})
+});
