@@ -103,7 +103,6 @@ public class TennisDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Request> listAllRequests() {
-		System.out.println("Reaching TennisDAO");
 		return sessionFactory.getCurrentSession()
 				.createCriteria(Request.class).list();
 	}
