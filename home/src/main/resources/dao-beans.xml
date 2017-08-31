@@ -12,9 +12,9 @@
 	<!-- 1. DataSource -->
 	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="#{systemEnvironment['SMS_URL']}" />
-		<property name="username" value="#{systemEnvironment['SMS_USERNAME']}" />
-		<property name="password" value="#{systemEnvironment['SMS_PASS']}" />
+		<property name="url" value="#{systemEnvironment['SNS_URL']}" />
+		<property name="username" value="#{systemEnvironment['SNS_USERNAME']}" />
+		<property name="password" value="#{systemEnvironment['SNS_PASS']}" />
 	</bean>
 	
 	<!-- 2. SessionFactory -->
