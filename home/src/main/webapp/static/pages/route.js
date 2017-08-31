@@ -4,8 +4,8 @@ angular.module("atp").config(function($locationProvider, $routeProvider) {
 	$routeProvider.when("/rankings", {
 		//templateUrl: "",
 		controller: "rankingController"
-	}).when("/tournaments", {
-		//templateUrl: "",
+	}).when("/tournament/all", {
+		templateUrl: "listTournaments.html",
 		controller: "tournamentController"
 	}).when("/coach", {
 		//templateUrl: "",
