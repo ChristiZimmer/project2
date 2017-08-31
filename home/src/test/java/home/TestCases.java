@@ -26,7 +26,7 @@ public class TestCases {
 			e.printStackTrace();
 		}
 		for(Tournament t : list){
-			System.out.println(t);
+			//System.out.println(t);
 		}
 	}
 	
