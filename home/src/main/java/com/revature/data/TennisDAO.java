@@ -11,14 +11,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Tournament;
-import com.revature.beans.Coach;
 import com.revature.beans.Player;
 import com.revature.beans.Request;
 
 @Repository
 public class TennisDAO {
 	
-	
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {

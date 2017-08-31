@@ -7,7 +7,11 @@ angular.module("atp").controller("rankingController", function($http, $scope) {
 });
 
 angular.module("atp").controller("tournamentController", function($http, $scope) {
-	// do something
+	$http({
+		method: "GET", url: "/tournament/all"
+	}).then(function(response) {
+		$scope.allTournaments = response.data;
+	});
 });
 
 angular.module("atp").controller("logoutController", function($http, $scope) {

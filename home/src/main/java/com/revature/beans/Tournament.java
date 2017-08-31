@@ -77,7 +77,7 @@ public class Tournament {
 
 	@Override
 	public String toString() {
-		return "Tournament [id=" + id + ", name=" + name + ", coach=" + coach + ", participants=" + participants + "]";
+		return "Tournament [id=" + id + ", name=" + name + ", coach=" + coach + "]";
 	}
 	
 	
