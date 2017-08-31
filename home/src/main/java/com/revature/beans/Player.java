@@ -23,10 +23,10 @@ public class Player {
 	@Column(name="PLAYER_ID")
 	private int id;
 	@NotBlank
-	@Column(name="PLAYER_NAME")
+	@Column(name="PLAYER_NAME", nullable=false)
 	private String name;
 	@NotBlank
-	@Column
+	@Column(nullable=false)
 	private String country;
 	@NotBlank
 	@Min(value=1)
@@ -34,10 +34,10 @@ public class Player {
 	private int rank;
 	@NotBlank
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="COACH_ID")
+	@JoinColumn(name="COACH_ID", nullable=false)
 	private Coach coach;
 	@ManyToMany
-	@JoinTable(name="TOURNAMENT_ENROLLMENT")
+	@JoinTable(name="TOURNAMENT_ID")
 	private Set<Tournament> tournaments;
 	@OneToMany(mappedBy="player")
 	private Set<Request> request;

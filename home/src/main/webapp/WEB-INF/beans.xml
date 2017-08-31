@@ -8,12 +8,22 @@
 	
 	<import resource="classpath:dao-beans.xml"/>
 	
+	<!-- Turns on annotation-based autowiring in Spring -->
 	<context:annotation-config />
+	
+	<!-- 
+	Turns on annotation support in Spring MVC
+	Basic annotations: @Controller, @RequestMapping 
+	 -->
 	<mvc:annotation-driven />
+	
 	<mvc:resources location="/static/**" mapping="/**"/>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/pages/" />
 		<property name="suffix" value=".html" />
 	</bean>
+	
+	<!-- This is what Spring uses to know where to scan for annotations
+		  related to both Spring framework and the hibernate framework -->
 	<context:component-scan base-package="home" />
 </beans>
