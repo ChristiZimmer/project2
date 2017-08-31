@@ -28,7 +28,6 @@ public class TestCases {
 		System.out.println("Hi Christi. We're Friends now, even though I can't spell your name, or just spell in general!");
 	}
 
-/*
 	@Ignore
 	@Test
 	public void testTournamentListAll(){
@@ -40,7 +39,7 @@ public class TestCases {
 			e.printStackTrace();
 		}
 		for(Tournament t : list){
-			//System.out.println(t);
+			System.out.println(t);
 		}
 	}
 
@@ -123,5 +122,4 @@ public class TestCases {
 		TennisDAO dao = (TennisDAO) applicationContext.getBean(TennisDAO.class);
 		return dao;
 	}
-	*/
 }

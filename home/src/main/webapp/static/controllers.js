@@ -8,7 +8,7 @@ angular.module("atp").controller("rankingController", function($http, $scope) {
 
 angular.module("atp").controller("tournamentController", function($http, $scope) {
 	$http({
-		method: "GET", url: "/tournament/all"
+		method: "GET", url: "/home/tournament/all"
 	}).then(function(response) {
 		$scope.allTournaments = response.data;
 	});

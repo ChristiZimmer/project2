@@ -20,7 +20,6 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String testLogin(){
-		System.out.println("Here");
 		return "redirect:/pages/home.html";
 	}
 
