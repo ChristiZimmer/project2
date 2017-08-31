@@ -2,6 +2,7 @@ package home;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
@@ -15,6 +16,7 @@ import com.revature.data.TennisDAO;
 
 public class TestCases {
 
+	@Ignore
 	@Test
 	public void testTournamentListAll(){
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("dao-beans.xml");
