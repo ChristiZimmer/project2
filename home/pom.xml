@@ -146,14 +146,6 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.6.4</version>
 		</dependency>
-		
-		<!-- Added to test Spring MVC -->
-		<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-test</artifactId>
-    <version>3.2.3.RELEASE</version>
-    <scope>test</scope>
-</dependency>
   </dependencies>
   <build>
     <finalName>home</finalName>
