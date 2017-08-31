@@ -20,7 +20,7 @@ angular.module("atp").controller("logoutController", function($http, $scope) {
 
 angular.module("atp").controller("requestController", function($http, $scope) {
 	$http({
-		method: "GET", url: "/request/all"
+		method: "GET", url: "/home/request/all"
 	}).then(function(response) {
 		$scope.allRequests = response.data;
 	})

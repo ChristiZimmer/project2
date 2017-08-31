@@ -16,10 +16,10 @@
 				</tr>
 				<tr ng-repeat="r in allRequests">
 					<td>{{r.id}}</td>
-					<td>{{r.submitted}}</td>
-					<td>{{r.resolved}}</td>
-					<td>{{r.player}}</td>
-					<td>{{r.coach}}</td>
+					<td>{{r.submitted | date: "short"}}</td>
+					<td>{{r.resolved | date: "short"}}</td>
+					<td>{{r.player.name}}</td>
+					<td>{{r.coach.name}}</td>
 					<td>{{r.status}}</td>
 					<td>{{r.description}}</td>
 				</tr>
