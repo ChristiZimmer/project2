@@ -5,14 +5,16 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Tournament;
-import com.revature.beans.Coach;
 import com.revature.beans.Player;
+import com.revature.beans.Request;
 
+@Repository
 public class TennisDAO {
 	
 	@Autowired
@@ -73,8 +75,8 @@ public class TennisDAO {
 	@Transactional(isolation=Isolation.READ_COMMITTED,
 			propagation=Propagation.REQUIRED,
 			rollbackFor=Exception.class)
-	public void requestCoach(Coach coach) {
-		sessionFactory.getCurrentSession().save(coach);
+	public void requestCoach(Request request) {
+		sessionFactory.getCurrentSession().save(request);
 	}
 	
 	/**
@@ -91,8 +93,8 @@ public class TennisDAO {
 	@Transactional(isolation=Isolation.READ_COMMITTED,
 				propagation=Propagation.REQUIRED,
 				rollbackFor=Exception.class)
-	public void validateCoachingRequest(Player player) {
-		sessionFactory.getCurrentSession().saveOrUpdate(player);
+	public void validateCoachingRequest(Request request) {
+		sessionFactory.getCurrentSession().saveOrUpdate(request);
 	}
 	
 	/**
@@ -101,9 +103,10 @@ public class TennisDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Player> listAllPlayers() {
+	public List<Request> listAllRequests() {
+		System.out.println("Reaching TennisDAO");
 		return sessionFactory.getCurrentSession()
-				.createCriteria(Player.class).list();
+				.createCriteria(Request.class).list();
 	}
 	
 	/**
@@ -113,8 +116,8 @@ public class TennisDAO {
 	@Transactional(isolation=Isolation.READ_COMMITTED,
 				propagation=Propagation.REQUIRED,
 				rollbackFor=Exception.class)
-	public void deleteCoach(Coach coach) {
-		sessionFactory.getCurrentSession().delete(coach);
+	public void deleteRequest(Request request) {
+		sessionFactory.getCurrentSession().delete(request);
 	}
 
 }

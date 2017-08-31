@@ -28,4 +28,22 @@ public class TestCases {
 		}
 	}
 	
+	/*
+	@Ignore
+	@Test
+	public void testListAllRequests() {
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("dao-beans.xml");
+		TennisDAO dao = (TennisDAO) applicationContext.getBean(TennisDAO.class);
+		List<Request> list = null;
+		try {
+			list = dao.listAllRequests();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (Request r: list) {
+			System.out.println(r);
+		}
+	}
+	*/
+	
 }
