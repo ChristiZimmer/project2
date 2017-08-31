@@ -25,5 +25,5 @@
 	
 	<!-- This is what Spring uses to know where to scan for annotations
 		  related to both Spring framework and the hibernate framework -->
-	<context:component-scan base-package="home" />
+	<context:component-scan base-package="com.revature" />
 </beans>
