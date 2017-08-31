@@ -1,4 +1,4 @@
-package home;
+package tests;
 
 import java.util.List;
 

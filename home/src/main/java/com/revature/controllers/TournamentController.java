@@ -50,7 +50,7 @@ public class TournamentController {
 		return dao.findAllTournaments();
 	}
 	
-	@RequestMapping(value="/tournament/join", method=RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/tournament/join", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public void addPlayerTournament(@RequestBody Tournament tournament, @RequestBody Player player){
 		dao.addPlayersTournament(tournament, player);

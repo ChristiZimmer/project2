@@ -38,5 +38,5 @@
 	<bean name="tennisDAO" class="com.revature.data.TennisDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	
 </beans>
