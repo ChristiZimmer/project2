@@ -37,7 +37,7 @@ public class Player {
 	@JoinColumn(name="COACH_ID", nullable=false)
 	private Coach coach;
 	@ManyToMany
-	@JoinTable(name="TOURNAMENT_ID")
+	@JoinTable(name="TOURNAMENT_ENROLLMENT")
 	private Set<Tournament> tournaments;
 	@OneToMany(mappedBy="player")
 	private Set<Request> request;
