@@ -15,6 +15,8 @@ import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Player {
 
@@ -34,11 +36,13 @@ public class Player {
 	private int rank;
 	@NotBlank
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="COACH_ID", nullable=false)
+	@JoinColumn(name="COACH_ID", nullable=true)
 	private Coach coach;
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="TOURNAMENT_ENROLLMENT")
 	private Set<Tournament> tournaments;
+	@JsonIgnore
 	@OneToMany(mappedBy="player")
 	private Set<Request> request;
 	
