@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.revature.beans.Player;
 import com.revature.beans.Request;
-import com.revature.beans.Tournament;
 import com.revature.data.TennisDAO;
 
 @Controller
@@ -51,13 +49,5 @@ public class PlayerCoachController {
 		System.out.println("Reaching PlayerCoachController");
 		return dao.listAllRequests();
 	}
-	
-	/*
-	@RequestMapping(value="/request/add", method=RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public void addPlayerTournament(@RequestBody Tournament tournament, @RequestBody Player player){
-		dao.addPlayersTournament(tournament, player);
-	}
-	*/
 
 }
