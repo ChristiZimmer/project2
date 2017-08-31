@@ -9,15 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 public class LoginController {
-	
-	public LoginController(){
-		System.out.println("HEUHEUEHEHEUEHEEEUEUE");
-	}
-	
 	/*
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	//@ResponseStatus(value=HttpStatus.OK)
@@ -27,9 +21,9 @@ public class LoginController {
 	}*/
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	@ResponseBody
-	public String getHomePageAfterLogin(HttpServletRequest request) {
-		return "hello theres";
+	public String testLogin(){
+		System.out.println("Here");
+		return "redirect:/pages/home.html";
 	}
 
 }
