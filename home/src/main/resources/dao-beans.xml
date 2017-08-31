@@ -12,7 +12,7 @@
 	<!-- 1. DataSource -->
 	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="#{systemEnvironment['SMS_DB']}" />
+		<property name="url" value="#{systemEnvironment['SMS_URL']}" />
 		<property name="username" value="#{systemEnvironment['SMS_USERNAME']}" />
 		<property name="password" value="#{systemEnvironment['SMS_PASS']}" />
 	</bean>
