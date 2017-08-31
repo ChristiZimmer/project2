@@ -16,5 +16,8 @@ angular.module("atp").config(function($locationProvider, $routeProvider) {
 	}).when("/logout", {
 		//templateUrl: "",
 		controller: "logoutController"
+	}).when("/request/all", {
+		templateUrl: "listRequests.html",
+		controller: "requestController"
 	})
 });
