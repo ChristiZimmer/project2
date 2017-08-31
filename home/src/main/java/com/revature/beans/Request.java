@@ -108,5 +108,12 @@ public class Request {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public String toString() {
+		return "Request [id=" + id + ", submitted=" + submitted + ", resolved=" + resolved + ", player=" + player.getName()
+				+ ", coach=" + coach.getName() + ", status=" + status + ", description=" + description + "]";
+	}
+	
 	
 }
