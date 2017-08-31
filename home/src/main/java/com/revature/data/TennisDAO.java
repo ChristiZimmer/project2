@@ -14,7 +14,6 @@ import com.revature.beans.Tournament;
 import com.revature.beans.Player;
 import com.revature.beans.Request;
 
-@Repository
 public class TennisDAO {
 	
 	@Autowired
