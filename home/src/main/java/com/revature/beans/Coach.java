@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -25,13 +26,13 @@ public class Coach {
 	@Column(name="COACH_NAME", nullable=false)
 	private String name;
 	@JsonIgnore
-	@OneToMany(mappedBy="coach")
+	@OneToMany(mappedBy="coach", fetch=FetchType.EAGER)
 	private Set<Player> pupils;
 	@JsonIgnore
-	@OneToMany(mappedBy="coach")
+	@OneToMany(mappedBy="coach", fetch=FetchType.EAGER)
 	private Set<Tournament> tournaments;
 	@JsonIgnore
-	@OneToMany(mappedBy="coach")
+	@OneToMany(mappedBy="coach", fetch=FetchType.EAGER)
 	private Set<Request> requests;
 	
 	public Coach() {
@@ -95,7 +96,7 @@ public class Coach {
 
 	@Override
 	public String toString() {
-		return "Coach [id=" + id + ", name=" + name + ", pupils=" + pupils + ", tournaments=" + tournaments + "]";
+		return "Coach [id=" + id + ", name=" + name + "]";
 	}
 
 }

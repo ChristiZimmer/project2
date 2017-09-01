@@ -6,10 +6,16 @@ angular.module("atp").config(function($locationProvider, $routeProvider) {
 		controller: "rankingController"
 	}).when("/tournament/all", {
 		templateUrl: "listTournaments.html",
-		controller: "tournamentGetAllController"
+		controller: "tournamentManageController"
 	}).when("/tournament/create", {
 		templateUrl: "createTournament.html",
 		controller: "tournamentCreateController"
+	}).when("/tournament/delete", {
+		templateUrl: "deleteTournament.html",
+		controller: "tournamentManageController"
+	}).when("/tournament/join", {
+		templateUrl: "joinTournament.html",
+		controller: "tournamentJoinController"
 	}).when("/coach", {
 		//templateUrl: "",
 		controller: "coachController"

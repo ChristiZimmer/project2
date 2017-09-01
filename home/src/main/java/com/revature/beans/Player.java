@@ -30,20 +30,19 @@ public class Player {
 	@NotBlank
 	@Column(nullable=false)
 	private String country;
-	@NotBlank
+	//@NotBlank
 	@Min(value=1)
-	@Column
+	@Column(nullable=false)
 	private int rank;
-	@NotBlank
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="COACH_ID", nullable=true)
 	private Coach coach;
 	@JsonIgnore
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="TOURNAMENT_ENROLLMENT")
 	private Set<Tournament> tournaments;
 	@JsonIgnore
-	@OneToMany(mappedBy="player")
+	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private Set<Request> request;
 	
 	public Player() {
@@ -116,8 +115,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", name=" + name + ", country=" + country + ", rank=" + rank + ", coach=" + coach
-				+ ", tournaments=" + tournaments + "]";
+		return "Player [id=" + id + ", name=" + name + ", country=" + country + ", rank=" + rank + "]";
 	}
 	
 }
