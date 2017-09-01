@@ -5,8 +5,11 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,32 +31,45 @@ public class TournamentController {
 
 	@RequestMapping(value="/tournament/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE) // Accept=application
 	@ResponseBody
-	public void create(@Valid @RequestBody Tournament Tournament){ // look in the request body and find Tournament
+	public ResponseEntity<Void> create(@Valid @RequestBody Tournament Tournament){ // look in the request body and find Tournament
 		dao.createTournament(Tournament);
+		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value="/tournament/update", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public void update(@RequestBody Tournament Tournament){
+	public ResponseEntity<Void> update(@RequestBody Tournament Tournament){
 		dao.updateTournament(Tournament);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/tournament/delete", method=RequestMethod.DELETE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/tournament/delete/{tournamentId}", method=RequestMethod.DELETE)
 	@ResponseBody
-	public void delete(@RequestBody Tournament Tournament){
-		dao.deleteTournament(Tournament);
+	public ResponseEntity<Void> delete(@PathVariable Integer tournamentId){
+		Tournament tournament = dao.findOneTournament(tournamentId.intValue());
+		if(tournament != null){
+			dao.deleteTournament(tournament);
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 	}
 	
 	@RequestMapping(value="/tournament/all", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Tournament> findAll(){
-		return dao.findAllTournaments();
+	public ResponseEntity<List<Tournament>> findAll(){
+		return new ResponseEntity<List<Tournament>>(dao.findAllTournaments(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/tournament/join", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/tournament/join/{tournamentId}/{playerId}", method=RequestMethod.PUT)
 	@ResponseBody
-	public void addPlayerTournament(@RequestBody Tournament tournament, @RequestBody Player player){
-		dao.addPlayersTournament(tournament, player);
+	public ResponseEntity<Void> addPlayerTournament(@PathVariable Integer tournamentId, @PathVariable Integer playerId){
+		Tournament tournament = dao.findOneTournament(tournamentId.intValue());
+		Player player = dao.findOnePlayer(playerId.intValue());
+		if(tournament != null && player != null){
+			dao.addPlayersTournament(tournament, player);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
 	
 }

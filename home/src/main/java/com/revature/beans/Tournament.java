@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -28,10 +29,10 @@ public class Tournament {
 	@Column
 	private String name;
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="COACH_ID")
+	@JoinColumn(name="COACH_ID", nullable=false)
 	private Coach coach;
 	@JsonIgnore
-	@ManyToMany(mappedBy="tournaments")
+	@ManyToMany(mappedBy="tournaments", fetch=FetchType.EAGER)
 	private Set<Player> participants;
 	
 	public Tournament() {
