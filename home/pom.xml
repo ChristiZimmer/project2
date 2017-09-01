@@ -159,7 +159,7 @@
 					<url>http://localhost:8080/manager/text</url> <!-- tomcat endpoint -->
 					<update>true</update>
 					<server>jenkins-bot</server> <!-- /conf/settings.xml -->
-					<path>/</path> <!-- where to deploy app (context root) -->
+					<path>/home</path> <!-- where to deploy app (context root) -->
 				</configuration>
 			</plugin>
 		</plugins>
