@@ -18,6 +18,15 @@ angular.module("atp").config(function($locationProvider, $routeProvider) {
 		controller: "logoutController"
 	}).when("/request/all", {
 		templateUrl: "listRequests.html",
-		controller: "requestController"
+		controller: "getAllRequestController"
+	}).when("/request/create", {
+		templateUrl: "createRequest.html",
+		controller: "createRequestController"
+	}).when("/request/delete", {
+		templateUrl: "deleteRequest.html",
+		controller: "deleteRequestController"
+	}).when("/request/update", {
+		templateUrl: "updateRequest.html",
+		controller: "updateRequestController"
 	})
 });
