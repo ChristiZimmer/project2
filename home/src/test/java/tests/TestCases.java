@@ -28,7 +28,7 @@ public class TestCases {
 	
 	@BeforeClass
 	public static void setup(){
-		context = new XmlWebApplicationContext();
+		context = new ClassPathXmlApplicationContext("dao-beans.xml");
 	}
 	
 	@Test
