@@ -57,10 +57,26 @@ angular.module("atp").controller("logoutController", function($http, $scope) {
 	// do something
 });
 
-angular.module("atp").controller("requestController", function($http, $scope) {
+angular.module("atp").controller("createRequestController", function($http, $scope) {
+	$scope.createRequest = function() {
+		$http.post("/home/request/create", $scope.request)
+		.then(function(value) {
+			window.alert("Request added");
+		})
+	}
+});
+
+angular.module("atp").controller("getAllRequestController", function($http, $scope) {
 	$http({
 		method: "GET", url: "/home/request/all"
 	}).then(function(response) {
 		$scope.allRequests = response.data;
 	})
 });
+
+
+//angular.module("atp").controller("createRequestController")
+
+
+
+//angular.module("atp").controller("createRequestController")
