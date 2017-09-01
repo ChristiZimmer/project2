@@ -73,11 +73,8 @@ public class TennisDAO {
 	 */
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 	public void addPlayersTournament(Tournament tournament, Player player) {
-		System.out.println(tournament);
-		System.out.println(player);
 		Set<Tournament> tournaments = player.getTournaments();
 		tournaments.add(tournament);
-		System.out.println(tournaments);
 		player.setTournaments(tournaments);
 		sessionFactory.getCurrentSession().saveOrUpdate(player);
 	}

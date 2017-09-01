@@ -7,10 +7,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 
 import com.revature.beans.Coach;
 import com.revature.beans.Player;
@@ -22,7 +24,13 @@ import oracle.sql.TIMESTAMP;
 
 public class TestCases {
 	
-	@Ignore
+	private static ApplicationContext context;
+	
+	@BeforeClass
+	public static void setup(){
+		context = new ClassPathXmlApplicationContext("dao-beans.xml");
+	}
+	
 	@Test
 	public void testHi() {
 		System.out.println("Hi Christi. We're not Friends now, even though I can't spell your name, or just spell in general!");
