@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -70,6 +71,17 @@ public class TournamentController {
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@RequestMapping(value="/tournament/getParticipants/{tournamentId}", method=RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<String> findOneTournament(@PathVariable Integer tournamentId){
+		String response = "";
+		Set<Player> participants = dao.findOneTournament(tournamentId.intValue()).getParticipants();
+		for(Player p : participants){
+			response += p.getName() + "<br/>";
+		}
+		return new ResponseEntity<String>(response, HttpStatus.OK);
 	}
 	
 }
