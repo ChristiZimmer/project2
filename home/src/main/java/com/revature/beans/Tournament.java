@@ -1,17 +1,17 @@
 package com.revature.beans;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -24,6 +24,8 @@ public class Tournament {
 	@Min(value=0)
 	@Id
 	@Column(name="TOURNAMENT_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="tourn")
+	@SequenceGenerator(name="tourn", sequenceName="TOURNAMENT_ID_SEQ")
 	private int id;
 	@NotBlank
 	@Column

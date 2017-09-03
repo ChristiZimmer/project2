@@ -5,11 +5,11 @@
 		</div>
 		<div class="panel-body">
 			<form ng-submit="createTournament()">
-				<input ng-model="tournament.id" type="number" class="form-control" placeholder="Tournament Id">
 				<input ng-model="tournament.name" type="text" class="form-control" placeholder="Name">
-				<input ng-model="tournament.coach.id" type="text" class="form-control" placeholder="Coach Id">
-				<input ng-model="tournament.coach.name" type="text" class="form-control" placeholder="Coach Name">
-				<input type="submit" value="Create" class="btn btn-lg btn-primary">
+				<select class="custom-select" ng-model="tournament.coach.id">
+				    <option ng-repeat="c in allCoaches" value="{{c.id}}">{{c.name}}</option>
+				</select><br/>
+				<input type="submit" value="Create" class="btn btn-lg btn-success">
 			</form>
 		</div>
 	</div>

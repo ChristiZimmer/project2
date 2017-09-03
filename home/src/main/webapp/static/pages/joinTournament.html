@@ -5,9 +5,13 @@
 		</div>
 		<div class="panel-body">
 			<form ng-submit="joinTournament()">
-				<input ng-model="tournamentId" type="number" class="form-control" placeholder="Tournament Id">
-				<input ng-model="playerId" type="number" class="form-control" placeholder="Player Id">
-				<input type="submit" value="Join" class="btn btn-lg btn-primary">
+				<select class="custom-select" ng-model="tournamentId">
+				    <option ng-repeat="t in allTournaments" value="{{t.id}}">{{t.name}}</option>
+				</select><br/>
+				<select class="custom-select" ng-model="playerId">
+				    <option ng-repeat="p in allPlayers" value="{{p.id}}">{{p.name}}</option>
+				</select><br/>
+				<input type="submit" value="Join" class="btn btn-lg btn-success">
 			</form>
 		</div>
 	</div>
