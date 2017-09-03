@@ -5,14 +5,19 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.revature.beans.Coach;
+import com.revature.beans.Player;
 import com.revature.beans.Request;
+import com.revature.beans.Tournament;
 import com.revature.data.TennisDAO;
 
 @Controller
@@ -50,4 +55,15 @@ public class PlayerCoachController {
 		return dao.listAllRequests();
 	}
 
+	@RequestMapping(value="/player/all", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<Player>> findAllPlayers(){
+		return new ResponseEntity<List<Player>>(dao.findAllPlayers(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/coach/all", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<Coach>> findAllCoaches(){
+		return new ResponseEntity<List<Coach>>(dao.findAllCoaches(), HttpStatus.OK);
+	}
 }

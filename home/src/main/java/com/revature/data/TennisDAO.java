@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Tournament;
+import com.revature.beans.Coach;
 import com.revature.beans.Player;
 import com.revature.beans.Request;
 
@@ -96,6 +97,24 @@ public class TennisDAO {
 		return sessionFactory.getCurrentSession().createCriteria(Tournament.class).list();
 	}
 
+	/**
+	 * Get all players
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Player> findAllPlayers() {
+		return sessionFactory.getCurrentSession().createCriteria(Player.class).list();
+	}
+	
+	/**
+	 * Get all coaches
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Coach> findAllCoaches() {
+		return sessionFactory.getCurrentSession().createCriteria(Coach.class).list();
+	}
+	
 	/**
 	 * Tennis Player can request to add a coach with coach's approval
 	 * @param coach
