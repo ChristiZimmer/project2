@@ -63,5 +63,10 @@ public class LoginController {
 		}
 		return false;
 	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(){
+		return "redirect:/index.html";
+	}
 
 }
