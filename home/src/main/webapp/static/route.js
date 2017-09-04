@@ -16,6 +16,9 @@ angular.module("atp").config(function($locationProvider, $routeProvider) {
 	}).when("/tournament/join", {
 		templateUrl: "joinTournament.html",
 		controller: "tournamentJoinController"
+	}).when("/createNewUser", {
+		templateUrl: "newUser.html",
+		controller: "createUserController"
 	}).when("/coach", {
 		//templateUrl: "",
 		controller: "coachController"

@@ -68,6 +68,22 @@ angular.module("atp").controller("tournamentJoinController", function($http, $sc
 	}
 });
 
+angular.module("atp").controller("createUserController", function($http, $scope) {
+	$scope.createUser = function(){
+		$http({
+			method: "POST", url: "/home/user/create", data: $scope.newUser
+		}).then(function(value) {
+			window.alert("User Created");
+		}, function(reason) {
+			if(reason.statusText == "Conflict"){
+				window.alert("Username Already taken")
+			}else{
+				window.alert("Unable to create user");
+			}
+		})
+	}
+});
+
 angular.module("atp").controller("logoutController", function($http, $scope) {
 	// do something
 });
