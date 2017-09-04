@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -50,7 +51,7 @@ public class TennisDAO {
 	 */
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 	public Tournament findOneTournament(int id) {
-		List<Tournament> list = sessionFactory.getCurrentSession().createCriteria(Tournament.class).list();
+		List<Tournament> list = sessionFactory.getCurrentSession().createCriteria(Tournament.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		for(Tournament t : list){
 			if(t.getId() == id){
 				return t;
@@ -66,7 +67,7 @@ public class TennisDAO {
 	 */
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 		public Coach findCoachByName(String name) {
-			List<Coach> list = sessionFactory.getCurrentSession().createCriteria(Coach.class).list();
+			List<Coach> list = sessionFactory.getCurrentSession().createCriteria(Coach.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 			for (Coach c : list) {
 				if (c.getName().equals(name)) {
 					return c;
@@ -80,7 +81,7 @@ public class TennisDAO {
 	 */
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 	public Player findOnePlayer(int id) {
-		List<Player> list = sessionFactory.getCurrentSession().createCriteria(Player.class).list();
+		List<Player> list = sessionFactory.getCurrentSession().createCriteria(Player.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		for(Player p : list){
 			if(p.getId() == id){
 				return p;
@@ -94,7 +95,7 @@ public class TennisDAO {
 	 */
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 	public Player findPlayerByName(String name) {
-		List<Player> list = sessionFactory.getCurrentSession().createCriteria(Player.class).list();
+		List<Player> list = sessionFactory.getCurrentSession().createCriteria(Player.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		for (Player p : list) {
 			if (p.getName().equals(name)) {
 				return p;
@@ -127,7 +128,7 @@ public class TennisDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Tournament> findAllTournaments() {
-		return sessionFactory.getCurrentSession().createCriteria(Tournament.class).list();
+		return sessionFactory.getCurrentSession().createCriteria(Tournament.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 
 	/**
@@ -136,7 +137,7 @@ public class TennisDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Player> findAllPlayers() {
-		return sessionFactory.getCurrentSession().createCriteria(Player.class).list();
+		return sessionFactory.getCurrentSession().createCriteria(Player.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 	
 	/**
@@ -145,7 +146,7 @@ public class TennisDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Coach> findAllCoaches() {
-		return sessionFactory.getCurrentSession().createCriteria(Coach.class).list();
+		return sessionFactory.getCurrentSession().createCriteria(Coach.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 	
 	/**
@@ -201,8 +202,7 @@ public class TennisDAO {
 	@Transactional
 	public List<Request> listAllRequests() {
 		//System.out.println(sessionFactory.getCurrentSession().createCriteria(Request.class).list());
-		return sessionFactory.getCurrentSession()
-				.createCriteria(Request.class).list();
+		return sessionFactory.getCurrentSession().createCriteria(Request.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 	
 	/**
@@ -221,7 +221,7 @@ public class TennisDAO {
 	 */
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 	public Request findRequest(int id) {
-		List<Request> list = sessionFactory.getCurrentSession().createCriteria(Request.class).list();
+		List<Request> list = sessionFactory.getCurrentSession().createCriteria(Request.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		for (Request r : list) {
 			if (r.getId() == id) {
 				return r;
