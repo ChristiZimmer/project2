@@ -47,6 +47,7 @@ public class TournamentController {
 	@RequestMapping(value="/tournament/delete/{tournamentId}", method=RequestMethod.DELETE)
 	@ResponseBody
 	public ResponseEntity<Void> delete(@PathVariable Integer tournamentId){
+		System.out.println(tournamentId);
 		Tournament tournament = dao.findOneTournament(tournamentId.intValue());
 		if(tournament != null){
 			dao.deleteTournament(tournament);

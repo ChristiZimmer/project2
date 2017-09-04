@@ -33,6 +33,6 @@ angular.module("atp").config(function($locationProvider, $routeProvider) {
 		controller: "deleteRequestController"
 	}).when("/request/update", {
 		templateUrl: "updateRequest.html",
-		controller: "updateRequestController"
+		controller: "getAllRequestController"
 	})
 });

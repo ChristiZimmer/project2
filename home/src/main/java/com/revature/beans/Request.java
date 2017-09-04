@@ -1,6 +1,9 @@
 package com.revature.beans;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -66,7 +69,7 @@ public class Request {
 	}
 
 	public void setSubmitted(Timestamp submitted) {
-		this.submitted = submitted;
+		this.submitted = submitted;		
 	}
 
 	public Timestamp getResolved() {
