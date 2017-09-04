@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Request {
@@ -22,7 +23,8 @@ public class Request {
 	private static final int DENIED = 3;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="request")
+	@SequenceGenerator(name="request", sequenceName="REQUEST_ID_SEQ")
 	@Column(name="REQUEST_ID")
 	private int id;
 	@Column(name="TIME_SUBMITTED")
