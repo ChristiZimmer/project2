@@ -1,6 +1,10 @@
 package com.revature.data;
 
 import java.util.Set;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -123,6 +127,10 @@ public class TennisDAO {
 			propagation=Propagation.REQUIRED,
 			rollbackFor=Exception.class)
 	public void requestCoach(Request request) {
+		//Calendar now = Calendar.getInstance();
+		//request.setSubmitted(Timestamp.valueOf(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.nn").format(new Date())));
+		Calendar now = Calendar.getInstance();
+		request.setSubmitted(new Timestamp(now.getTime().getTime()));
 		sessionFactory.getCurrentSession().save(request);
 	}
 	
@@ -141,6 +149,9 @@ public class TennisDAO {
 				propagation=Propagation.REQUIRED,
 				rollbackFor=Exception.class)
 	public void validateCoachingRequest(Request request) {
+		Calendar now = Calendar.getInstance();
+		request.setResolved(new Timestamp(now.getTime().getTime()));
+		//request.setStatus("PENDING");
 		sessionFactory.getCurrentSession().saveOrUpdate(request);
 	}
 	
@@ -151,6 +162,7 @@ public class TennisDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Request> listAllRequests() {
+		//System.out.println(sessionFactory.getCurrentSession().createCriteria(Request.class).list());
 		return sessionFactory.getCurrentSession()
 				.createCriteria(Request.class).list();
 	}
@@ -164,6 +176,20 @@ public class TennisDAO {
 				rollbackFor=Exception.class)
 	public void deleteRequest(Request request) {
 		sessionFactory.getCurrentSession().delete(request);
+	}
+	
+	/**
+	 * Finds a request based on its id
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public Request findRequest(int id) {
+		List<Request> list = sessionFactory.getCurrentSession().createCriteria(Request.class).list();
+		for (Request r : list) {
+			if (r.getId() == id) {
+				return r;
+			}
+		}
+		return null;
 	}
 
 }
