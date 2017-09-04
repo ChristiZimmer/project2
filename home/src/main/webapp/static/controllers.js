@@ -85,7 +85,9 @@ angular.module("atp").controller("createUserController", function($http, $scope)
 });
 
 angular.module("atp").controller("logoutController", function($http, $scope) {
-	// do something
+	$http({
+		method: "GET", url: "/home/logout"
+	})
 });
 
 angular.module("atp").controller("createRequestController", function($http, $scope) {
