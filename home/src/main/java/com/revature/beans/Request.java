@@ -18,10 +18,6 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Request {
 	
-	private static final int PENDING = 1;
-	private static final int ACCEPTED = 2;
-	private static final int DENIED = 3;
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="request")
 	@SequenceGenerator(name="request", sequenceName="REQUEST_ID_SEQ")

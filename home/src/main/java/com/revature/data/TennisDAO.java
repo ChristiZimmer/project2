@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Tournament;
+import com.revature.beans.Coach;
 import com.revature.beans.Player;
 import com.revature.beans.Request;
 
@@ -59,6 +60,22 @@ public class TennisDAO {
 	}
 	
 	/**
+	 * Get coach based on name
+	 * @param name
+	 * @return
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+		public Coach findCoachByName(String name) {
+			List<Coach> list = sessionFactory.getCurrentSession().createCriteria(Coach.class).list();
+			for (Coach c : list) {
+				if (c.getName().equals(name)) {
+					return c;
+				}
+			}
+			return null;
+	}
+	
+	/**
 	 * Finds a Player by the id
 	 */
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
@@ -72,6 +89,19 @@ public class TennisDAO {
 		return null;
 	}
 	
+	/**
+	 * Find player by name
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public Player findPlayerByName(String name) {
+		List<Player> list = sessionFactory.getCurrentSession().createCriteria(Player.class).list();
+		for (Player p : list) {
+			if (p.getName().equals(name)) {
+				return p;
+			}
+		}
+		return null;
+	}
 	/**
 	 * Adds the Player to the list of participants in the Tournament and saves the Tournament
 	 */
@@ -134,6 +164,15 @@ public class TennisDAO {
 		request.setResolved(new Timestamp(now.getTime().getTime()));
 		//request.setStatus("PENDING");
 		sessionFactory.getCurrentSession().saveOrUpdate(request);
+	}
+	
+	/**
+	 * Save player information
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public void updatePlayerInstructor(Player player, Coach coach) {
+		player.setCoach(coach);
+		sessionFactory.getCurrentSession().saveOrUpdate(player);
 	}
 	
 	/**
