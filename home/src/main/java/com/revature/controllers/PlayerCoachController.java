@@ -47,6 +47,15 @@ public class PlayerCoachController {
 		Request request = dao.findRequest(requestId.intValue());
 		if (request != null && status == 1) {
 			request.setStatus("ACCEPTED");
+			//System.out.println(request.getCoach().getName());
+			//System.out.println(request.getPlayer().getName());
+			Coach coach = dao.findCoachByName(request.getCoach().getName());
+			Player player = dao.findPlayerByName(request.getPlayer().getName());
+			//System.out.println(coach);
+			//System.out.println(player);
+			//player.setCoach(coach);
+			//player.setCoach(coach);
+			dao.updatePlayerInstructor(player, coach);
 			dao.validateCoachingRequest(request);
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		} else if (request != null && status == 0) {
