@@ -131,6 +131,24 @@ public class TennisDAO {
 	}
 
 	/**
+	 * Get all players
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Player> findAllPlayers() {
+		return sessionFactory.getCurrentSession().createCriteria(Player.class).list();
+	}
+	
+	/**
+	 * Get all coaches
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Coach> findAllCoaches() {
+		return sessionFactory.getCurrentSession().createCriteria(Coach.class).list();
+	}
+	
+	/**
 	 * Tennis Player can request to add a coach with coach's approval
 	 * @param coach
 	 */

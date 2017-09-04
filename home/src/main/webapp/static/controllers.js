@@ -18,25 +18,40 @@ angular.module("atp").controller("tournamentManageController", function($http, $
 		}).then(function(response) {
 			if(response.statusText === "No Content"){
 				window.alert("Tournament Deleted");
-			}else{
-				window.alert("Not valid tournament id");
 			}
 		}, function(reason) {
-			window.alert("Not valid tournament id");
+			window.alert("Unable to delete tournament");
 		});
 	}
 });
 
 angular.module("atp").controller("tournamentCreateController", function($http, $scope) {
+	$http({
+		method: "GET", url: "/home/coach/all"
+	}).then(function(response) {
+		$scope.allCoaches = response.data;
+	});
 	$scope.createTournament = function(){
 		$http.post("/home/tournament/create", $scope.tournament)
 		.then(function(value) {
 			window.alert("Tournament Added");
+		}, function(reason) {
+			window.alert("Unable to add tournament");
 		})
 	}
 });
 
 angular.module("atp").controller("tournamentJoinController", function($http, $scope) {
+	$http({
+		method: "GET", url: "/home/player/all"
+	}).then(function(response) {
+		$scope.allPlayers = response.data;
+	});
+	$http({
+		method: "GET", url: "/home/tournament/all"
+	}).then(function(response) {
+		$scope.allTournaments = response.data;
+	});
 	$scope.joinTournament = function(){
 		var urlString = "/home/tournament/join/" + $scope.tournamentId + "/" + $scope.playerId;
 		$http({
@@ -48,8 +63,24 @@ angular.module("atp").controller("tournamentJoinController", function($http, $sc
 				window.alert(response.statusText);
 			}
 		}, function(reason) {
-			window.alert(reason.statusText);
+			window.alert("Unable to join tournament");
 		});
+	}
+});
+
+angular.module("atp").controller("createUserController", function($http, $scope) {
+	$scope.createUser = function(){
+		$http({
+			method: "POST", url: "/home/user/create", data: $scope.newUser
+		}).then(function(value) {
+			window.alert("User Created");
+		}, function(reason) {
+			if(reason.statusText == "Conflict"){
+				window.alert("Username Already taken")
+			}else{
+				window.alert("Unable to create user");
+			}
+		})
 	}
 });
 

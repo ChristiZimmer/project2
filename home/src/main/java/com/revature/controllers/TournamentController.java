@@ -32,8 +32,8 @@ public class TournamentController {
 
 	@RequestMapping(value="/tournament/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE) // Accept=application
 	@ResponseBody
-	public ResponseEntity<Void> create(@Valid @RequestBody Tournament Tournament){ // look in the request body and find Tournament
-		dao.createTournament(Tournament);
+	public ResponseEntity<Void> create(@Valid @RequestBody Tournament tournament){ // look in the request body and find Tournament
+		dao.createTournament(tournament);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
@@ -47,7 +47,6 @@ public class TournamentController {
 	@RequestMapping(value="/tournament/delete/{tournamentId}", method=RequestMethod.DELETE)
 	@ResponseBody
 	public ResponseEntity<Void> delete(@PathVariable Integer tournamentId){
-		System.out.println(tournamentId);
 		Tournament tournament = dao.findOneTournament(tournamentId.intValue());
 		if(tournament != null){
 			dao.deleteTournament(tournament);

@@ -45,7 +45,6 @@
 			function getParticipants(){
 				var xhr = new XMLHttpRequest();
 				xhr.open("GET", "/home/tournament/getParticipants/" + event.target.parentNode.parentNode.childNodes[1].innerHTML, false);
-				window.alert(event.target.parentNode.parentNode.childNodes[1].innerHTML);
 				xhr.send();
 				return xhr.response;
 			}
