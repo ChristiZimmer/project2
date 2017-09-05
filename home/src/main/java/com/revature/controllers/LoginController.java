@@ -56,7 +56,7 @@ public class LoginController {
 		List<Person> list = dao.findAllUsers();
 		for(Person u : list){
 			if(u.getUsername().equals(username)){
-				if(BCrypt.checkpw(username, u.getPassword())){
+				if(BCrypt.checkpw(password, u.getPassword())){
 					return true;
 				}
 			}
