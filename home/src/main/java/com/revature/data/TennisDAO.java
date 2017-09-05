@@ -77,6 +77,20 @@ public class TennisDAO {
 	}
 	
 	/**
+	 * Get coach based on id
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public Coach findCoachById(int id) {
+		List<Coach> list = sessionFactory.getCurrentSession().createCriteria(Coach.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		for (Coach c : list) {
+			if (c.getId() == id) {
+				return c;
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * Finds a Player by the id
 	 */
 	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
@@ -161,7 +175,7 @@ public class TennisDAO {
 		//request.setSubmitted(Timestamp.valueOf(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.nn").format(new Date())));
 		Calendar now = Calendar.getInstance();
 		request.setSubmitted(new Timestamp(now.getTime().getTime()));
-		sessionFactory.getCurrentSession().save(request);
+		sessionFactory.getCurrentSession().saveOrUpdate(request);
 	}
 	
 	/**
@@ -192,6 +206,24 @@ public class TennisDAO {
 	public void updatePlayerInstructor(Player player, Coach coach) {
 		player.setCoach(coach);
 		sessionFactory.getCurrentSession().saveOrUpdate(player);
+	}
+	
+	/**
+	 * Saves playerId and coachId to request
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public void setPlayerIdandCoachIdToRequest(Request request, Player player, Coach coach) {
+		request.setPlayer(player);
+		request.setCoach(coach);
+		sessionFactory.getCurrentSession().saveOrUpdate(request);
+	}
+	
+	/**
+	 * Saves playerId and coachId to request for the selector methods
+	 */
+	@Transactional(isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	public void setPlayerIdandCoachIdToRequestForSelectors(Request request, Player player, Coach coach) {
+		// Do something
 	}
 	
 	/**

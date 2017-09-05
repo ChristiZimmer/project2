@@ -36,6 +36,11 @@ public class PlayerCoachController {
 	@ResponseBody
 	public void create(@Valid @RequestBody Request request){ // look in the request body and find Request
 		request.setStatus("PENDING");
+		Coach coach = dao.findCoachById(request.getCoach().getId());
+		//System.out.println(coach.getId());
+		Player player = dao.findOnePlayer(request.getPlayer().getId());
+		//System.out.println(player.getId());
+		dao.setPlayerIdandCoachIdToRequest(request, player, coach);
 		dao.requestCoach(request);
 	}
 	
