@@ -37,5 +37,7 @@ angular.module("atp").config(function($locationProvider, $routeProvider) {
 	}).when("/request/update", {
 		templateUrl: "updateRequest.html",
 		controller: "getAllRequestController"
+	}).when("/coach/all", {
+		
 	})
 });

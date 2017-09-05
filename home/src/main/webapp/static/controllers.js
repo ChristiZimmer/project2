@@ -91,6 +91,17 @@ angular.module("atp").controller("logoutController", function($http, $scope) {
 });
 
 angular.module("atp").controller("createRequestController", function($http, $scope) {
+	$http({
+		method: "GET", url: "/home/player/all"
+	}).then(function(response) {
+		$scope.allPlayers = response.data;
+	});
+	$http({
+		method: "GET", url: "/home/coach/all"
+	}).then(function(response) {
+		$scope.allCoaches = response.data;
+	});
+	
 	$scope.createRequest = function() {
 		$http.post("/home/request/create", $scope.request)
 		.then(function(value) {
