@@ -1,0 +1,97 @@
+<div id="updateRequestTable">
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			<h3 class="panel-title">Validate requests</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table table-hover">
+				<tr>
+					<th>Request ID</th>
+					<th>Submitted</th>
+					<th>Resolved</th>
+					<th>Player</th>
+					<th>Coach</th>
+					<th>Status</th>
+					<th>Description</th>
+					<th>Accept</th>
+					<th>Deny</th>
+				</tr>
+				<tr ng-repeat="r in allRequests">
+					<td id="id">{{r.id}}</td>
+					<td>{{r.submitted | date: "short"}}</td>
+					<td>{{r.resolved | date: "short"}}</td>
+					<td>{{r.player.name}}</td>
+					<td>{{r.coach.name}}</td>
+					<td>{{r.status}}</td>
+					<td>{{r.description}}</td>
+					<td>
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#requestUpdate">
+						Accept
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#requestUpdate">
+						Deny
+						</button>
+					</td>
+					<!--
+					<td><form ng-click="acceptRequest()">
+							<input class='myclass' type='button' value='Accept'/>
+						</form>
+					</td>
+					<td><form ng-click="deleteRequest()">
+							<input class='myclass' type='button' value='Deny'/>
+						</form>
+					</td>
+					-->
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="requestUpdate" tabindex="-1" role="dialog" aria-labelledby="updateRequestTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateRequestTitle">Updating Request</h5>
+      </div>
+      <div class="modal-body">
+        <p id="dataRow">Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+      	<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	var id = null;
+	var status = null;
+	document.getElementById("updateRequestTable").addEventListener("click", function(e) {
+		if(event.target.className == "btn btn-success") {
+			id = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+			status = 1;
+			//window.alert(id);
+		} else if(event.target.className == "btn btn-danger") {
+			id = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+			status = 0;
+			//window.alert(id);
+		}
+	}, false)
+	//function changeModal(){}
+	document.getElementById("requestUpdate").addEventListener("click", function(e) {
+		if(event.target.className == "btn btn-success") {
+			function getId() {
+				var xhr = new XMLHttpRequest();
+				xhr.open("PUT", "/home/request/update/" + id + "/" + status, false);
+				xhr.send();
+				return xhr.response;
+			}
+			document.getElementById("id").innerHTML = getId();
+			location.reload();
+		} else if(event.target.className == "btn btn-danger") {
+		
+		}
+	}, false);
+</script>

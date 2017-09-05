@@ -56,12 +56,17 @@ public class LoginController {
 		List<Person> list = dao.findAllUsers();
 		for(Person u : list){
 			if(u.getUsername().equals(username)){
-				if(BCrypt.checkpw(username, u.getPassword())){
+				if(BCrypt.checkpw(password, u.getPassword())){
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(){
+		return "redirect:/index.html";
 	}
 
 }

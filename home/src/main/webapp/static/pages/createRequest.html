@@ -1,0 +1,23 @@
+<div>
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			<h3 class="panel-title">Create Request</h3>
+		</div>
+		<div class="panel-body">
+			<form ng-submit="createRequest()">
+				
+				<select class="custom-select" ng-model="request.player.id">
+				    <option ng-repeat="p in allPlayers" value="{{p.id}}">{{p.name}}</option>
+				</select><br/>
+				<select class="custom-select" ng-model="request.coach.id">
+				    <option ng-repeat="c in allCoaches" value="{{c.id}}">{{c.name}}</option>
+				</select><br/>
+				
+				<!-- <input ng-model="request.player.name" type="text" class="form-control" placeholder="Player Name"> -->
+				<!-- <input ng-model="request.coach.name" type="text" class="form-control" placeholder="Coach Name"> -->
+				<input ng-model="request.description" type="text" class="form-control" placeholder="Description">
+				<input type="submit" value="Create" class="btn btn-lg btn-primary">
+			</form>
+		</div>
+	</div>
+</div>
